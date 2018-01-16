@@ -22,10 +22,7 @@ import { Http } from '@angular/http';
       </form>
 
       <div class="row">
-      <foto url="./assets/img/arduino.png" titulo="arduino">  </foto>
-      <foto url="./assets/img/beagle.jpeg" titulo="Beagle">  </foto>
-      <foto url="./assets/img/esp.jpg" titulo="Esp">  </foto>
-      <foto url="./assets/img/orange.jpg" titulo="Esp">  </foto>
+      {{listaFotos}}
       </div>
     </div>
   `,
@@ -34,9 +31,19 @@ import { Http } from '@angular/http';
 export class AppComponent {
   texto = 'IoTPics';
 
+  listaFotos: Array<Object> = []
+  //listaFotos: any[];
+
   constructor(ajax: Http) {
   
     ajax.get('http://localhost:3000/v1/fotos')
-  
+      .subscribe(
+        resposta => {
+          this.listaFotos = resposta.json()
+        },
+        erro => console.log(erro)
+        //(function(resposta) {
+        //console.log((resposta.json()));  
+      )
   }
 }
