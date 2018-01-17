@@ -6,13 +6,15 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { FotoModule } from './foto/foto.module';
 import { ListagemComponent } from './listagem/listagem.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListagemComponent
+    ListagemComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
