@@ -22,7 +22,10 @@ import { Http } from '@angular/http';
       </form>
 
       <div class="row">
-      {{listaFotos}}
+      
+      <painel class="col-sm-2" *ngFor = "let foto of listaFotos" titulo="{{foto.titulo}}">
+      <foto  url="{{foto.url}}" titulo="{{foto.titulo}}"><br></foto>
+      </painel>
       </div>
     </div>
   `,
