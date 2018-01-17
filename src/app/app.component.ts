@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-root',
-  template: `<app-listagem></app-listagem>`,
+  template: `<router-outlet></router-outlet>`,
   styles: []
 })
 export class AppComponent{}

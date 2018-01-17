@@ -1,0 +1,2 @@
+(input)="foto.titulo = $event.target.value" 
+
