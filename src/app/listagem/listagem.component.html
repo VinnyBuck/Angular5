@@ -12,10 +12,15 @@
       </div>
     </form>
 
-    <div class="row">
+    <div class="row"> 
+
+      <p *ngIf="mensagem" class="alert alert-warning">
+        {{mensagem}}
+      </p>
     
       <painel class="col-sm-2" *ngFor = "let foto of listaFotos" titulo="{{foto.titulo}}">
       <foto  url="{{foto.url}}" titulo="{{foto.titulo}}"><br></foto>
+      <button (click)="excluir(foto )" class="btn btn-danger center-block">Del</button>
       </painel>
       </div>
   </div>

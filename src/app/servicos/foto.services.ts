@@ -1,8 +1,11 @@
 import { FotoComponent } from './../foto/foto.component';
 import { Http, Headers, Response } from '@angular/http';
 import { map } from 'rxjs/operators';
+import 'rxjs/add/operator/map'
 import { Observable } from "rxjs";
+import { Inject, Injectable } from '@angular/core';
 
+@Injectable()
 export class FotoService {
 
     url = 'http://localhost:3000/v1/fotos'
@@ -34,7 +37,9 @@ export class FotoService {
 
     alterar() {}
 
-    deletar() {}
+    deletar(foto: FotoComponent): Observable<Response> {
+        return this.conexaoApi.delete(`${this.url}/${foto._id}`)
+    }
 
     consultar(){}
 }

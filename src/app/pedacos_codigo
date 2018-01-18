@@ -22,3 +22,37 @@
       //console.log((resposta.json()));  
     );
    }
+
+
+----
+
+ {
+    http.get('http://localhost:3000/v1/fotos')
+      .subscribe(
+        resposta => { this.listaFotos = resposta.json()
+        },
+      erro => console.log(erro)
+      //(function(resposta) {
+      //console.log((resposta.json()));  
+    );
+   }
+
+
+  salvar(evt: Event){
+
+    evt.preventDefault();
+    let cabecalho = new Headers()
+    cabecalho.append('Content-Type', 'application/json')
+    this.conApi.post('http://localhost:3000/v1/fotos', JSON.stringify(this.foto),{
+      headers: cabecalho  
+    }
+  ).subscribe(
+    () => {
+      this.foto = new FotoComponent()
+    },//resposta => console.log(resposta),
+    erro => console.log(erro)
+    
+  )
+    //console.log('hello');
+    //console.log(this.foto);
+  }

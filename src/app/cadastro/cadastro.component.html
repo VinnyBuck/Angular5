@@ -5,6 +5,9 @@
 
 <section class="container">
     <div class="row">
+        <p *ngIf = "mensagem" class="alert alert-success">
+            {{mensagem}} 
+        </p>
         <form  class="col-sm-6" (submit)="salvar($event)">
 
             <div class="form-group">
@@ -37,7 +40,7 @@
             
             <aside class="col-sm-4">
 
-                <painel titulo="{{foto.titulo}}">
+                <painel *ngIf="foto.titulo" titulo="{{foto.titulo}}">
                     <foto url="{{foto.url}}" titulo="{{foto.titulo}}">
                         {{foto.descricao}}
                     </foto>

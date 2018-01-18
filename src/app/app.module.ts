@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { FotoModule } from './foto/foto.module';
 import { ListagemComponent } from './listagem/listagem.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { FotoService } from './servicos/foto.services';
 
 
 
@@ -26,7 +27,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     roteamento,
     PainelModule
   ],
-  providers: [],
+  providers: [ FotoService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
