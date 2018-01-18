@@ -1,2 +1,24 @@
 (input)="foto.titulo = $event.target.value" 
 
+(input)="foto.url = $event.target.value"
+
+(input)="foto.descricao = $event.target.value"
+
+
+  exibFoto(evt: Event) {
+
+    evt.preventDefault();
+
+    let cabecalho = new Headers()
+
+    cabecalho.append('Content-Type', 'application/json')
+
+    this.conApi.get('')
+      .subscribe(
+        resposta => { this.fot = resposta.json()
+        },
+      erro => console.log(erro)
+      //(function(resposta) {
+      //console.log((resposta.json()));  
+    );
+   }

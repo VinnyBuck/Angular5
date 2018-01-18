@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FotoComponent } from "../foto/foto.component";
+import { Http, Headers } from "@angular/http";
 
 @Component({
   selector: 'app-cadastro',
@@ -8,9 +9,15 @@ import { FotoComponent } from "../foto/foto.component";
 })
 export class CadastroComponent implements OnInit {
 
-  foto: FotoComponent = new FotoComponent()
-  
-  constructor() { }
+  //foto: FotoComponent = new FotoComponent()
+  foto = new FotoComponent()
+
+  conApi: Http
+
+  constructor(ajax: Http) { 
+
+    this.conApi = ajax;
+  }
 
 
 
@@ -21,11 +28,22 @@ export class CadastroComponent implements OnInit {
 
     evt.preventDefault();
 
-    console.log('hello');
+    let cabecalho = new Headers()
 
-    console.log(this.foto);
+    cabecalho.append('Content-Type', 'application/json')
+
+    this.conApi.post('http://localhost:3000/v1/fotos', JSON.stringify(this.foto),{
+      headers: cabecalho  
+    }
+  ).subscribe(
+    () => {
+      this.foto = new FotoComponent()
+    },//resposta => console.log(resposta),
+    erro => console.log(erro)
     
-    
+  )
+    //console.log('hello');
+    //console.log(this.foto);
   }
 
 }
