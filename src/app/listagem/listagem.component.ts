@@ -6,7 +6,9 @@ import { FotoComponent } from "../foto/foto.component";
 @Component({
   selector: 'app-listagem',
   templateUrl: './listagem.component.html',
-  styles: []
+  styles: [`.row {
+    margin-bottom: 1.4em;
+}`]
 
 })
 export class ListagemComponent implements OnInit {

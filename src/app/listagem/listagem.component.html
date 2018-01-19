@@ -1,35 +1,30 @@
 <header class="jumbotron">
-  <h1 class="text-center">
-    {{texto}}
-  </h1>
+  <h1 class="text-center"> {{texto}} </h1>
 </header>
-  <div class="container" style="text-align:center">
-    <div class="row">
-      <div class="class-md-12">
 
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+          <p *ngIf="mensagem" class="alert alert-warning"> {{mensagem}} </p>
+
+        <form>
         <div class="input-group">
           <span class="input-group-btn">
           <a [routerLink]="['cadastro']" class="btn btn-primary"> New </a>
-
-          <input type="search" class="form-control">
         </span>
+          <input #inputBusca type="search" class="form-control" placeholder="Busque pelo nome">
         </div>
-      
-
-
-
-      <p *ngIf="mensagem" class="alert alert-warning">
-        {{mensagem}}
-      </p>
-    
-      <painel class="col-sm-4" *ngFor = "let foto of listaFotos" titulo="{{foto.titulo}}">
-      <a [routerLink]="['cadastro', foto._id]">
-      <foto  url="{{foto.url}}" titulo="{{foto.titulo}}"><br></foto>
-      </a>
-      <br>
-      <button (click)="excluir(foto )" class="btn btn-danger center-block">Del</button>
-      </painel>
+      </form>
     </div>
   </div>
-  
+    <div class="row">
+      <painel class="col-sm-2" *ngFor = "let foto of listaFotos | filtroPorTitulo:inputBusca.value" titulo="{{foto.titulo}}">
+        <a [routerLink]="['cadastro', foto._id]">
+          <foto  url="{{foto.url}}" titulo="{{foto.titulo}}"><br></foto>
+        </a>
+        <br>
+        <button (click)="excluir(foto )" class="btn btn-danger center-block">Del</button>
+      </painel>
+    </div>
   </div>
