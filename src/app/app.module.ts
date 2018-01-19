@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { roteamento } from './app.routes';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { FotoModule } from './foto/foto.module';
@@ -23,6 +23,7 @@ import { FotoService } from './servicos/foto.services';
     BrowserModule,
     FotoModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     roteamento,
     PainelModule

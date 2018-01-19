@@ -8,32 +8,50 @@
         <p *ngIf = "mensagem" class="alert alert-success">
             {{mensagem}} 
         </p>
-        <form  class="col-sm-6" (submit)="salvar($event)">
+        <form [(formGroup)]="formCadastro" class="col-sm-6" (ngSubmit)="salvar()">
 
             <div class="form-group">
                 <label for="">Titulo</label>
-                <input [(ngModel)] = "foto.titulo"
+                <input  formControlName='titulo'
+                        [(ngModel)] = "foto.titulo"
                         name = "titulo"
                         type="text" 
                         class="form-control">
+                    <span *ngIf="formCadastro.controls.titulo.errors">
+                    <span *ngIf="formCadastro.controls.titulo.errors.required" class="form-control alert-danger">
+                        Campo Obrigatorio
+                    </span>
+                    <span *ngIf="formCadastro.controls.titulo.errors.minlength" class="form-control alert-danger">
+                        Digite pelo menos 3 caracteres
+                    </span>
+                </span>
             </div>
             <div class="form-group">
                 <label for="">Url</label>
-                <input  [(ngModel)] = "foto.url"
+                <input  formControlName='url'
+                        [(ngModel)] = "foto.url"
                         name = "url"
                         type="text" 
                         class="form-control">
+
+                        <span *ngIf="formCadastro.controls.url.invalid" class="form-control alert-danger">
+                            Campo Url Obrigatorio
+                        </span>
+                        <span *ngIf="formCadastro.controls.url.invalid" class="form-control alert-danger">
+                            Campo Url Obrigatorio
+                        </span>
             </div>
             <div class="form-group">
                     <label for="">Descricao</label>
-                    <textarea  [(ngModel)] = "foto.descricao"
+                    <textarea   formControlName='descricao'
+                                [(ngModel)] = "foto.descricao"
                                 name = "descricao"
                                 type="text" 
                                 class="form-control"></textarea>
             </div>
             <a [routerLink]="['']" class="btn btn-default">Voltar</a>
 
-            <button class="btn btn-primary">Salvar</button>
+            <button [disabled]="formCadastro.invalid" type="submit" class="btn btn-primary">Salvar</button>
 
         </form>
 

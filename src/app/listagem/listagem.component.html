@@ -4,15 +4,19 @@
   </h1>
 </header>
   <div class="container" style="text-align:center">
-    <form>
-      <div class="col-md-12 form-group">      
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Filtrar pelo nome da placa">
-        
-        <a [routerLink]="['cadastro']"  class="btn btn-primary">Cadastro</a>
-      </div>
-    </form>
+    <div class="row">
+      <div class="class-md-12">
 
-    <div class="row"> 
+        <div class="input-group">
+          <span class="input-group-btn">
+          <a [routerLink]="['cadastro']" class="btn btn-primary"> New </a>
+
+          <input type="search" class="form-control">
+        </span>
+        </div>
+      
+
+
 
       <p *ngIf="mensagem" class="alert alert-warning">
         {{mensagem}}
@@ -25,5 +29,7 @@
       <br>
       <button (click)="excluir(foto )" class="btn btn-danger center-block">Del</button>
       </painel>
-      </div>
+    </div>
+  </div>
+  
   </div>

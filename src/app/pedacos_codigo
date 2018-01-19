@@ -56,3 +56,22 @@
     //console.log('hello');
     //console.log(this.foto);
   }
+
+
+required
+                        #inputUrl="ngModel"
+
+
+                        required
+                        #inputTitulo="ngModel"
+
+
+                        formCadastro.invalid
+
+                            <form>
+      <div class="col-md-12 form-group">      
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Filtrar pelo nome da placa">
+        
+        <a [routerLink]="['cadastro']"  class="btn btn-primary">Cadastro</a>
+      </div>
+    </form>
