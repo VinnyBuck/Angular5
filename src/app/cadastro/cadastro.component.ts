@@ -2,6 +2,8 @@ import { FotoService } from './../servicos/foto.services';
 import { Component, OnInit } from '@angular/core';
 import { FotoComponent } from "../foto/foto.component";
 import { Http, Headers } from "@angular/http";
+import { ActivatedRoute } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -17,26 +19,38 @@ export class CadastroComponent implements OnInit {
   conApi: Http
 
   //ajax: Http
-  constructor(private servico: FotoService) { 
-      
-      }
+  constructor(private servico: FotoService, 
+              private rotaAtiva: ActivatedRoute,
+              private roteamento: Router) { }
+
     //this.conApi = ajax;
 
-
-
   ngOnInit() {
+    this.carregarFoto()
   }
 
+  carregarFoto(){
+    this.rotaAtiva.params.subscribe(
+      parametros => 
+      { 
+        if(parametros.id) 
+          { 
+            this.servico.consultar(parametros.id).subscribe( fotoResponse => { this.foto = fotoResponse })
+          }
+      })
+    }
+  
   salvar(evt: Event){
 
     evt.preventDefault();
 
-    this.servico.cadastrar(this.foto)
+    this.servico.salvar(this.foto)
             .subscribe( 
                 () => {this.foto  = new FotoComponent()
                        this.mensagem = `Foto ${this.foto.titulo} cadastrada com sucesso`
                        setTimeout(()  => {
                         this.mensagem = ''
+                        this.roteamento.navigate([''])
                       }, 1500)
               
                 }, 
