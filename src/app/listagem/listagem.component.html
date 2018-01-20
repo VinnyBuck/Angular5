@@ -13,7 +13,7 @@
           <span class="input-group-btn">
           <a [routerLink]="['cadastro']" class="btn btn-primary"> New </a>
         </span>
-          <input #inputBusca type="search" class="form-control" placeholder="Busque pelo nome">
+          <input (input)="0" #inputBusca type="search" class="form-control" placeholder="Busque pelo nome">
         </div>
       </form>
     </div>
